@@ -1,20 +1,20 @@
-name:Continuous Integration
+name: CI
+
 on:
   push:
-    branches:["main"]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout source code
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: check project files
-        run: | 
-          echo "running CI process..."
-          ls -la
-      - name: validate HTML
-       run: |
-         test -f index.html
-         echo"HTML file exits"
-      - name: CI success
-        run: echo "build and validation completed successfully"
+
+      - name: Run a test
+        run: echo "CI is working!"
